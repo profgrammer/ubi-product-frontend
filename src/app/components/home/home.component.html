@@ -1,0 +1,14 @@
+<div class="container" style="padding: 20px">
+  <h4>Home</h4>
+
+  <div>
+    <div [hidden]="this.qlen == 0">
+      <h5 >Items in queue: {{this.qlen}}</h5>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let product of this.productService.getCurrent()">
+        <app-product [product]="product"></app-product>
+      </div>
+    </div>
+  </div>
+</div>

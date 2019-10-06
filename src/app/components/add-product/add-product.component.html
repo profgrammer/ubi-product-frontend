@@ -1,0 +1,27 @@
+<div class="container" style="padding: 20px;">
+  <h4>Add Product</h4>
+  <form [formGroup]="addProduct">
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Product title</label>
+      <input type="text" formControlName="title" class="form-control" id="title" name="title" placeholder="e.g Assassin's creed">
+      <div *ngIf="submitted && addProduct.controls.title.errors" class="error">
+        <div class="alert alert-danger" *ngIf="addProduct.controls.title.errors.required">title is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Product Description</label>
+      <textarea formControlName="description" class="form-control" id="desc" name="desc" rows="3"></textarea>
+      <div *ngIf="submitted && addProduct.controls.description.errors" class="error">
+        <div class="alert alert-danger" *ngIf="addProduct.controls.description.errors.required">description is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlFile1">Product image</label>
+      <input (change)="onFileSelect($event)" type="file" name="image" class="form-control-file" id="image" accept="image/*">
+      <div *ngIf="submitted && addProduct.controls.image.errors" class="error">
+        <div class="alert alert-danger" *ngIf="addProduct.controls.image.errors.required">image is required</div>
+      </div>
+    </div>
+    <button type="button" (click)="onSubmit($event)" class="btn btn-primary mb-2">Add Product</button>
+  </form>
+</div>
